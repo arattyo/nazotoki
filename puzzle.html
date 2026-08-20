@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第1問</title>
+</head>
+<body style="background:#111;color:white;font-family:sans-serif;text-align:center;">
+
+<h1>第1問</h1>
+
+<p>朝は4本、昼は2本、夜は3本で歩くものは？</p>
+
+<input id="answer" type="text" placeholder="答えを入力">
+
+<br><br>
+
+<button onclick="checkAnswer()">回答</button>
+
+<p id="result"></p>
+
+<script>
+function checkAnswer() {
+
+    const answer =
+        document.getElementById("answer")
+        .value
+        .trim();
+
+    if (
+        answer === "にんげん" ||
+        answer === "人間" ||
+        answer === "ニンゲン"
+    ) {
+
+        document.getElementById("result").innerHTML =
+            "正解！";
+
+    } else {
+
+        document.getElementById("result").innerHTML =
+            "不正解";
+
+    }
+}
+</script>
+
+</body>
+</html>
