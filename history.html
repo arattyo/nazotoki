@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>解いた問題</title>
+
+<script src="js/questions.js"></script>
+
+</head>
+
+<body style="
+background:#111;
+color:white;
+font-family:sans-serif;
+text-align:center;
+">
+
+<h1>解いた問題</h1>
+
+<div id="history"></div>
+
+<script>
+
+const currentPuzzle =
+    Number(
+        localStorage.getItem(
+            "currentPuzzle"
+        ) || 1
+    );
+
+const historyDiv =
+    document.getElementById(
+        "history"
+    );
+
+questions.forEach(question => {
+
+    if(question.id < currentPuzzle){
+
+        historyDiv.innerHTML += `
+
+        <hr>
+
+        <h2>${question.title}</h2>
+
+        <img
+        src="${question.image}"
+        width="500"
+        style="max-width:90%;"
+        >
+
+        <p>
+        答え：
+        ${question.answers[0]}
+        </p>
+
+        `;
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
