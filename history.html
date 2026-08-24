@@ -2,20 +2,17 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>解いた問題</title>
 
-<script src="js/questions.js"></script>
+<link rel="stylesheet"
+href="css/style.css">
 
 </head>
 
-<body style="
-background:#111;
-color:white;
-font-family:sans-serif;
-text-align:center;
-">
+<body>
 
 <h1>解いた問題</h1>
 
@@ -23,42 +20,57 @@ text-align:center;
 
 <script>
 
-const currentPuzzle =
-    Number(
-        localStorage.getItem(
-            "currentPuzzle"
-        ) || 1
-    );
+const SHEET_URL =
+"https://script.google.com/macros/s/AKfycbypGDBNbjmi-hHmGaoxRuYjgR3rI_ZvpJxEfLR_aSov3z2wELMzkeeuZtGWINjDFgD4/exec";
 
-const historyDiv =
+const currentPuzzle =
+Number(
+    localStorage.getItem(
+        "currentPuzzle"
+    ) || 1
+);
+
+console.log(
+    "currentPuzzle =",
+    currentPuzzle
+);
+fetch(SHEET_URL)
+.then(response => response.json())
+.then(questions => {
+
+    const historyDiv =
     document.getElementById(
         "history"
     );
 
-questions.forEach(question => {
+    questions.forEach(question => {
 
-    if(question.id < currentPuzzle){
+        if(
+            question.id
+            < currentPuzzle
+        ){
 
-        historyDiv.innerHTML += `
+            historyDiv.innerHTML += `
 
-        <hr>
+            <hr>
 
-        <h2>${question.title}</h2>
+            <h2>${question.title}</h2>
 
-        <img
-        src="${question.image}"
-        width="500"
-        style="max-width:90%;"
-        >
+            <img
+            src="${question.image}"
+            width="500"
+            style="max-width:90%;">
 
-        <p>
-        答え：
-        ${question.answers[0]}
-        </p>
+            <p>
+            答え：
+            ${question.answers[0]}
+            </p>
 
-        `;
+            `;
 
-    }
+        }
+
+    });
 
 });
 

@@ -35,13 +35,15 @@ onclick="location.href='history.html'">
 
 function startGame(){
 
+    localStorage.clear();
+
     localStorage.setItem(
         "currentPuzzle",
         1
     );
 
     location.href =
-        "puzzle.html?id=1";
+    "puzzle.html?id=1";
 
 }
 
